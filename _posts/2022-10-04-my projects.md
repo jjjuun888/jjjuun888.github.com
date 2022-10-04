@@ -4,7 +4,7 @@ title:  "나를 소개하는 글(?)"
 date:   2022-10-04
 excerpt: "안녕"
 project: true
-tag: none
+tag: - introduction
 comments: true
 ---
 

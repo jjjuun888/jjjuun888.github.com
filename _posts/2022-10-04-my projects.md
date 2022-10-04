@@ -40,6 +40,7 @@ comments: true
 
 {% capture image %}
 https://github.com/jjjuun888/jjjuun888.github.com/blob/main/assets/img/m.png?raw=true
+{% endcapture %}
 
 #### 송이
 
@@ -48,6 +49,10 @@ https://github.com/jjjuun888/jjjuun888.github.com/blob/main/assets/img/m.png?raw
 나이 : 2살
 성별 : 암컷
 {% endhighlight yaml %}
+
+{% capture image %}
+https://github.com/jjjuun888/jjjuun888.github.com/blob/main/assets/img/s.png?raw=true
+{% endcapture %}
 
 ## 끝
 

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "My Projects"
+title:  "나를 소개하는 글(?)"
 date:   2022-10-04
-excerpt: "project"
+excerpt: "안녕"
 project: true
 tag:
 - jekyll 
@@ -37,6 +37,8 @@ comments: true
 나이 : 3살
 성별 : 수컷
 {% endhighlight yaml %}
+
+(https://raw.githubusercontent.com/jjjuun888/jjjuun888.github.com/main/assets/img/%EB%AF%B8%EB%A5%B4.jpg)
 
 #### 송이
 

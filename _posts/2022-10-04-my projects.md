@@ -38,6 +38,8 @@ comments: true
 성별 : 수컷
 {% endhighlight yaml %}
 
+https://github.com/jjjuun888/jjjuun888.github.com/blob/main/assets/img/m.png?raw=true
+
 #### 송이
 
 {% highlight yaml %}

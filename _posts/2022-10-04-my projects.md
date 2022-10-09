@@ -5,6 +5,7 @@ date:   2022-10-04
 excerpt: "안녕"
 project: true
 tag:
+- blog
 comments: true
 ---
 

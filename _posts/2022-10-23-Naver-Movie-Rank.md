@@ -10,7 +10,7 @@ comments: true
 ---
 
 ## 코딩학원
-* [swh코딩학원](https://swhcoding.com/)
+* [swh코딩학원](https://swhcoding.com/), [길찾기](https://map.naver.com/v5/search/swh%EC%BD%94%EB%94%A9/place/1787287675?c=14188203.1459324,4480090.9604538,15.63,0,0,0,dh&isCorrectAnswer=true)
 * 학원쌤 [블로그](https://tobby48.github.io/)
 * 선생님 메일 주소 `swhacademy@gmail.com`
 

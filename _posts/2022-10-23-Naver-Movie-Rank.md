@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "네이버 영화 랭킹 코드"
+title:  "[Python]NaverRanking"
 date:   2022-10-23
-excerpt: "나중에 또 사용할 수도 있으니 보관해둠"
+excerpt: "네이버 영화 랭킹 코드"
 project: true
 tag:
 - blog

@@ -1,3 +1,14 @@
+---
+layout: post
+title:  "[Python]Two_Window"
+date:   2022-11-13
+excerpt: "두 개의 윈도우 제어하기 코드 저장"
+project: true
+tag:
+- blog
+comments: true
+---
+
 #### 두 개의 윈도우 제어하기
 ---
 import sys

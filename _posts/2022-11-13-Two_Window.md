@@ -11,6 +11,7 @@ comments: true
 
 #### 두 개의 윈도우 제어하기
 ---
+{% highlight yaml %}
 import sys
 from PyQt5.QtWidgets import *
 
@@ -54,3 +55,4 @@ if __name__ == '__main__':
     window = MyWindow()
     window.show()
     sys.exit(app.exec_())
+{% endhighlight %}

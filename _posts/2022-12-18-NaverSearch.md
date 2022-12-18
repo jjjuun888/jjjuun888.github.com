@@ -2,7 +2,7 @@
 layout: post
 title:  "[Python]NaverBlog_search"
 date:   2022-12-18
-excerpt: "네이버 블로그 검색"
+excerpt: "네이버 블로그 검색(PyQt)"
 project: true
 tag:
 - blog

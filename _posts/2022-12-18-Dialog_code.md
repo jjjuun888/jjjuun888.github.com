@@ -12,6 +12,8 @@ comments: true
 #### 과제 코드
 ---
 
+{% highlight yaml %}
+
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -40,11 +42,12 @@ class MyWindow(QWidget):
         button = QPushButton("버튼", self)
         button.clicked.connect(self.pressed)
 
-        self.table = QTableWidget()
-        header = ['파일명', '수정한 날짜', '크기']
-        self.table.setColumnCount(len(header))
-        self.table.setHorizontalHeaderLabels(header)
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.setTable()
+        #self.table = QTableWidget()
+        #header = ['파일명', '수정한 날짜', '크기']
+        #self.table.setColumnCount(len(header))
+        #self.table.setHorizontalHeaderLabels(header)
+        #self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.label = QLabel("", self)
 
@@ -60,20 +63,29 @@ class MyWindow(QWidget):
 
         self.setLayout(layout)
 
-    def pressed(self):
-        fname = QFileDialog.getExistingDirectory(self, '폴더 선택', './')
-        self.label.setText(fname)
-        self.row = []
-        files = os.listdir(fname)
-        # -----
-        while 1: # 수정
-            th = threading.Thread(target=self.worker, args=files)
-            th.start()
-            time.sleep(3)
-        # 스레드 활용
+    def setTable(self):
+        self.table = QTableWidget()
+        header = ['파일명', '수정한 날짜', '크기']
+        self.table.setColumnCount(len(header))
+        self.table.setHorizontalHeaderLabels(header)
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-    def worker(self, files):
-        print('3초') # 수정
+    def pressed(self):
+        self.fname = QFileDialog.getExistingDirectory(self, '폴더 선택', './')
+        self.label.setText(self.fname)
+
+        th = threading.Thread(target=self.worker)
+        th.start()
+
+    def worker(self):
+        while 1:
+            print('감시')
+            self.row = []
+            self.a()
+            time.sleep(1)
+
+    def a(self):
+        files = os.listdir(self.fname)
         for a in files:
             ff = []
             ff.append(a)
@@ -82,11 +94,11 @@ class MyWindow(QWidget):
             if os.path.isfile(di) == False:
                 ff.append('')
             else:
-                ff.append(str(math.ceil(os.path.getsize(di)/1024)) + 'KB')
+                ff.append(str(math.ceil(os.path.getsize(di) / 1024)) + 'KB')
             self.row.append(ff)
+
         self.table.setRowCount(len(self.row))
         self.setTableWidgetData()
-        # -----
 
     def setTableWidgetData(self):
         for b in range(len(self.row)):
@@ -109,5 +121,7 @@ if __name__ == "__main__":
     window = MyWindow()
     window.show()
     sys.exit(app.exec_())
+
+{% endhighlight %}
 
 ---

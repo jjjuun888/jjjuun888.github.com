@@ -2,7 +2,7 @@
 layout: post
 title:  "[Python]Dialog_code"
 date:   2022-12-11
-excerpt: "실습-다이얼로그 코드("
+excerpt: "실습-다이얼로그 코드(PyQt)"
 project: true
 tag:
 - blog

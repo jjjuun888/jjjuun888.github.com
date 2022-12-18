@@ -9,11 +9,6 @@ tag:
 comments: true
 ---
 
-## 코딩학원
-* [swh코딩학원](https://swhcoding.com/), [길찾기](https://map.naver.com/v5/search/swh%EC%BD%94%EB%94%A9/place/1787287675?c=14188203.1459324,4480090.9604538,15.63,0,0,0,dh&isCorrectAnswer=true)
-* 학원쌤 [블로그](https://tobby48.github.io/)
-* 선생님 메일 주소 `swhacademy@gmail.com`
-
 #### 네이버 랭킹 과제(원본)
 
 {% highlight yaml %}
@@ -34,15 +29,11 @@ for tag in soup.select('div[class=tit3] a'):
     # requests.get('https://movie.naver.com' + url)
 {% endhighlight %}
 
-##### 설명
-
-현재 시간을 기준으로 [네이버 영화 랭크](https://movie.naver.com/movie/sdb/rank/rmovie.naver)를 출력해주는 코드
-
 ---
 
-## 과제
+#### 과제
 
-영화 `평점과 댓글` 함께 출력하는 코드 작성
+---
 
 {% highlight yaml %}
 import requests
@@ -111,4 +102,4 @@ if __name__ == "__main__":
         print(b)
 {% endhighlight %}
 
-클래스랑 함수 사용이 아직 미숙함
+---

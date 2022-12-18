@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "code"
-date:   0000-00-00
+title:  "[Python]code"
+date:   2022-12-18
 excerpt: "코드 공유"
 project: true
 tag:

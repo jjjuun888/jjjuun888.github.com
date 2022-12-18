@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[Python]code"
+title:  "[Python]Dialog_code"
 date:   2022-12-18
-excerpt: "코드 공유"
+excerpt: "(실습-다이얼로그) 코드"
 project: true
 tag:
 - blog

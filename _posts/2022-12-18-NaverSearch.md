@@ -55,8 +55,8 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
     def pressed(self):
-        client_id = "AZYMZvmSoAPVWfVYvrIL"
-        client_secret = "bLgdILn74p"
+        client_id = "___user_ID___"
+        client_secret = "___user_PW___"
         encText = urllib.parse.quote(self.search_text.text())
         url = "https://openapi.naver.com/v1/search/blog?query=" + encText  # JSON 결과
         # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # XML 결과

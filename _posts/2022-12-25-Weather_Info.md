@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Python]WeatherInfo"
+title:  "[Python]Weather_Info"
 date:   2022-12-25
 excerpt: "날씨 정보 코드(웹 XML파싱)"
 project: true

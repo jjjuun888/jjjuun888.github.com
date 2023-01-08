@@ -21,7 +21,6 @@ from PyQt5.QtGui import QIcon
 import requests
 from bs4 import BeautifulSoup
 
-
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()

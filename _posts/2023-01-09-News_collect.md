@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Python]News_Collect"
+title:  "[Python]News_collect"
 date:   2023-01-09
 excerpt: "네이버 뉴스(웹 파싱)"
 project: true

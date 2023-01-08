@@ -2,7 +2,7 @@
 layout: post
 title:  "[Python]NaverBlog_search"
 date:   2022-12-18
-excerpt: "네이버 블로그 검색(PyQt)"
+excerpt: "네이버 블로그 검색(PyQt, 웹 Json파싱)"
 project: true
 tag:
 - blog
@@ -59,7 +59,6 @@ class MyWindow(QWidget):
         client_secret = "___user_PW___"
         encText = urllib.parse.quote(self.search_text.text())
         url = "https://openapi.naver.com/v1/search/blog?query=" + encText  # JSON 결과
-        # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # XML 결과
         request = urllib.request.Request(url)
         request.add_header("X-Naver-Client-Id", client_id)
         request.add_header("X-Naver-Client-Secret", client_secret)

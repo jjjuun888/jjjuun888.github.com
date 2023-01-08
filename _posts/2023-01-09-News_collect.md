@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[Python]Weather_Info"
-date:   2022-12-25
-excerpt: "날씨 정보 코드(웹 XML파싱)"
+title:  "[Python]News_Collect"
+date:   2023-01-09
+excerpt: "네이버 뉴스(웹 XML파싱)"
 project: true
 tag:
 - blog
@@ -11,73 +11,102 @@ comments: true
 
 #### 과제
 
-웹 XML 파싱!!
-HTML이랑 비슷함..
-
 ---
 
 {% highlight yaml %}
+
+import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
 import requests
 from bs4 import BeautifulSoup
 
-class SeoulWeather:
-    def __init__(self, cityname, rlist):
-        self.cityname = cityname
-        self.rlist = rlist
 
-    def __str__(self):
-        return '%s\n%s\n%s' % (self.cityname, '=====', self.p(self.rlist))
-
-    def p(self, list):
-        re = ""
-        for fo in list:
-            re = re + str(fo) + '\n'
-
-        return re
-
-class WeatherInfo:
-    def __init__(self, time, state, min, max):
-        self.time = time
-        self.state = state
-        self.min = min
-        self.max = max
-
-    def __str__(self):
-        return '시간: %s, 날씨: %s, 최저: %s, 최고: %s' % (self.time, self.state, self.min, self.max)
-
-class Weather:
+class MyWindow(QWidget):
     def __init__(self):
-        self.response = requests.get('http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=109')
-        self.html = self.response.text
-        self.soup = BeautifulSoup(self.html, 'html.parser')
+        super().__init__()
+        self.initUI()
 
-    def info(self, i):
-        rlist = []
+    def initUI(self):
+        self.setWindowTitle('News_collect')
+        self.setWindowIcon(QIcon('cat3.jpg'))
 
-        cityname = i.select('city')[0].text
-        for ii in i.select('data'):
-            time = ii.select('tmef')[0].text #시간
-            state = ii.select('wf')[0].text #상태
-            min = ii.select('tmn')[0].text #최저
-            max = ii.select('tmx')[0].text #최고
-            rr = WeatherInfo(time, state, min, max)
-            rlist.append(rr)
+        self.resize(600, 400)
+        centerGeometry = QDesktopWidget().availableGeometry().center()
+        frameGeometry = self.frameGeometry()
+        frameGeometry.moveCenter(centerGeometry)
 
-        return SeoulWeather(cityname, rlist)
+        self.table = QTableWidget()
+        header = ['제공회사', '제목', '수정날짜']
+        self.table.setColumnCount(len(header))
+        self.table.setHorizontalHeaderLabels(header)
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-    def weaterInfo(self):
-        self.location = self.soup.select('body location')
-        alist = []
-        for i in self.location:
-            alist.append(self.info(i))
+        self.daylayout = QLabel('날짜 :', self)
+        self.dayline = QLineEdit()
 
-        return alist
+        self.categorylayout = QLabel('카테고리 :', self)
+        self.categorybox = QComboBox()
+        self.cb = {'정치': [100, 269], '경제': [101, 263], '사회': [102, 257], '문화': [103, 245], '세계': [104, 322], '과학': [105, 228], 'IT': [105, 230]}
+        self.categorybox.addItems(self.cb)
+
+        self.button = QPushButton('검색', self)
+        self.button.clicked.connect(self.pressed)
+
+        toplayout = QGridLayout()
+        toplayout.addWidget(self.daylayout, 0, 0)
+        toplayout.addWidget(self.dayline, 0, 1)
+        toplayout.addWidget(self.categorylayout, 1, 0)
+        toplayout.addWidget(self.categorybox, 1, 1)
+        toplayout.addWidget(self.button, 1, 2)
+
+        layout = QVBoxLayout()
+        layout.addLayout(toplayout)
+        layout.addWidget(self.table)
+
+        self.setLayout(layout)
+
+    def pressed(self):
+        day = self.dayline.text()
+        sid1 = self.cb[self.categorybox.currentText()][0]
+        sid2 = self.cb[self.categorybox.currentText()][1]
+        self.row = []
+        url = 'https://news.naver.com/main/list.naver?mode=LS2D&sid2={}&sid1={}&mid=shm&date={}'.format(sid2, sid1, day)
+        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+        html = response.text
+        soup = BeautifulSoup(html, 'html.parser')
+
+        for tag in soup.select('ul[class=type06_headline] li'):
+            r = []
+            r.append(tag.select('dl dt a')[-1].text.strip())
+            r.append(tag.select('dd span[class=writing]')[0].text)
+            r.append(tag.select('dd span')[-1].text)
+            self.row.append(r)
+
+        self.table.setRowCount(len(self.row))
+        self.setTableWidgetData()
+
+    def setTableWidgetData(self):
+        for b in range(len(self.row)):
+            for c in range(len(self.row[b])):
+                item = QTableWidgetItem(self.row[b][c])
+                self.table.setItem(b, c, item)
+
+        self.table.resizeColumnsToContents()
+        self.table.resizeRowsToContents()
+
+    def closeEvent(self, event):
+        ack = QMessageBox.question(self, '종료', '창을 닫을래요?', QMessageBox.Yes | QMessageBox.No)
+        if ack == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
 
 if __name__ == "__main__":
-    a = Weather()
-    b = a.weaterInfo()
-    for bb in b:
-        print(bb)
+    app = QApplication(sys.argv)
+    window = MyWindow()
+    window.show()
+    sys.exit(app.exec_())
 
 {% endhighlight %}
 

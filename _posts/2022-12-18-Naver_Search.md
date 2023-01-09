@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Python]NaverBlog_search"
+title:  "[Python]NaverBlog_Search"
 date:   2022-12-18
 excerpt: "네이버 블로그 검색(PyQt, 웹 Json파싱)"
 project: true

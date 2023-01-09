@@ -2,7 +2,7 @@
 layout: post
 title:  "[Python]News_Collect"
 date:   2023-01-09
-excerpt: "네이버 뉴스(웹 파싱)"
+excerpt: "네이버 뉴스(PyQt, 웹 파싱)"
 project: true
 tag:
 - blog

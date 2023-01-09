@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Python]NaverRanking"
+title:  "[Python]Naver_Ranking"
 date:   2022-10-23
 excerpt: "네이버 영화 랭킹 코드"
 project: true
